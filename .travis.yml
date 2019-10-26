@@ -1,6 +1,6 @@
 language: c
-script: asdf plugin-test zola $TRAVIS_BUILD_DIR
-before_script:
+script: asdf plugin-test zola $TRAVIS_BUILD_DIR 'zola --version'
+before_script: 
   - git clone https://github.com/asdf-vm/asdf.git asdf
   - . asdf/asdf.sh
 os:
