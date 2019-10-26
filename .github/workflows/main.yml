@@ -21,4 +21,4 @@ jobs:
       - name: Test the plugin
         run: |
           . $HOME/asdf/asdf.sh
-          asdf plugin-test zola $GITHUB_WORKSPACE 'zola --version' --asdf-tool-version ${{matrix.version}} 
+          GITHUB_API_TOKEN=${{secrets.GITHUB_TOKEN}} asdf plugin-test zola $GITHUB_WORKSPACE 'zola --version' --asdf-tool-version ${{matrix.version}} 
