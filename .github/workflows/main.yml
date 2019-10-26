@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest]
-        version: [0.5.1, 0.6.3, 0.7.4]
+        version: [0.7.0, 0.8.0, 0.9.0]
 
     runs-on: ${{ matrix.os }}
 
