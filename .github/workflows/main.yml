@@ -18,14 +18,15 @@ jobs:
           - ubuntu-latest
           - macOS-latest
 
+    runs-on: ${{ matrix.os }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install asdf
-        run: |
-          git clone https://github.com/asdf-vm/asdf.git $HOME/asdf --branch v0.8.0
-      - name: Test the plugin
-        run: |
-          . $HOME/asdf/asdf.sh
-          GITHUB_API_TOKEN=${{secrets.GITHUB_TOKEN}} asdf plugin-test zola $GITHUB_WORKSPACE 'zola --version' --asdf-tool-version ${{matrix.version}} --asdf-plugin-gitref $GITHUB_SHA
+        uses: asdf-vm/actions/plugin-test@v1
+        with:
+          command: zola --version
+        env:
+          GITHUB_API_TOKEN: ${{ github.token }}
