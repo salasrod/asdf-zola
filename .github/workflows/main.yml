@@ -1,15 +1,22 @@
 name: CI
 
-on: [push, pull_request]
+on:
+  pull_request:
+    paths-ignore:
+      - "**.md"
+  push:
+    paths-ignore:
+      - "**.md"
+  schedule:
+    - cron: 0 0 * * 5
 
 jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest]
-        version: [0.10.0, 0.11.0, 0.12.0]
-
-    runs-on: ${{ matrix.os }}
+        os: 
+          - ubuntu-latest
+          - macOS-latest
 
     steps:
       - name: Checkout
